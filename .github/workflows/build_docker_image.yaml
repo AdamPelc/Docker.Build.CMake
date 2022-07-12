@@ -1,0 +1,18 @@
+name: Build CMake docker image
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-img:
+    runs-on: ubuntu-latest
+    env:
+      CMAKE_VER: 3.23.2
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Build CMake docker image
+        run: docker build -t esmundosu/build.cmake.img:latest -t esmundosu/build.cmake.img:v$CMAKE_VER --build-arg=$CMAKE_VER .
