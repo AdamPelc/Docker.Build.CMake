@@ -15,4 +15,4 @@ jobs:
         with:
           submodules: recursive
       - name: Build CMake docker image
-        run: docker build -t esmundosu/Build.CMake.img:latest -t esmundosu/Build.CMake.img:v$CMAKE_VER --build-arg=$CMAKE_VER .
+        run: docker build -t esmundosu/build.cmake.img:latest -t esmundosu/build.cmake.img:v$CMAKE_VER --build-arg=$CMAKE_VER .
