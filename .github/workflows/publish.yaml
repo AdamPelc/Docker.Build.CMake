@@ -27,12 +27,12 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and push CMake Docker image
+      - name: Build and push CMake v${{ env.CMAKE_VER }} Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: |
-            esmundosu/build.cmake:v${CMAKE_VER}
+            esmundosu/build.cmake:v${{ env.CMAKE_VER }}
             esmundosu/build.cmake:latest
-          build-args: CMAKE_VER=${CMAKE_VER}
+          build-args: CMAKE_VER=${{ env.CMAKE_VER }}
