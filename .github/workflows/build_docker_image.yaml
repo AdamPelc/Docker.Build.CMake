@@ -7,10 +7,12 @@ on:
 jobs:
   build-img:
     runs-on: ubuntu-latest
+    env:
+      CMAKE_VER: 3.23.2
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
         with:
           submodules: recursive
       - name: Build CMake docker image
-        run: docker build -t cmake-img .
+        run: docker build -t esmundosu/Build.CMake.img:latest -t esmundosu/Build.CMake.img:v$CMAKE_VER --build-arg=$CMAKE_VER .
